@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Progcaster","Manages broadcasting of progress updates to and receiving updates from workers."]],"type":[["ProgressVec","A list of progress updates corresponding to `((child_scope, [in/out]_port, timestamp), delta)`"]]});

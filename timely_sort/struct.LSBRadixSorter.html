@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `LSBRadixSorter` struct in crate `timely_sort`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, LSBRadixSorter">
+
+    <title>timely_sort::LSBRadixSorter - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Struct LSBRadixSorter</p><div class="block items"><ul><li><a href="#implementations">Trait Implementations</a></li></ul></div><p class='location'><a href='index.html'>timely_sort</a></p><script>window.sidebarCurrent = {name: 'LSBRadixSorter', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>timely_sort</a>::<wbr><a class="struct" href=''>LSBRadixSorter</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/timely_sort/lsb.rs.html#18-20' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct LSBRadixSorter&lt;T&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A few buffers capable of radix sorting by least significant byte.</p>
+
+<p>The sorter allows the use of multiple different key bytes, determined by a type <code>U: Unsigned</code>.
+Currently, one is allowed to mix and match these as records are pushed, which may be a design
+bug.</p>
+</div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+        <h3 id='impl-RadixSorter&lt;T, U&gt;' class='impl'><span class='in-band'><code>impl&lt;T, U:&nbsp;<a class="trait" href="../timely_sort/trait.Unsigned.html" title="trait timely_sort::Unsigned">Unsigned</a>&gt; <a class="trait" href="../timely_sort/trait.RadixSorter.html" title="trait timely_sort::RadixSorter">RadixSorter</a>&lt;T, U&gt; for <a class="struct" href="../timely_sort/struct.LSBRadixSorter.html" title="struct timely_sort::LSBRadixSorter">Sorter</a>&lt;T&gt;</code><a href='#impl-RadixSorter&lt;T, U&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#22-41' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.push' class="method"><span id='push.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#tymethod.push' class='fnname'>push</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U&gt;(&amp;mut self, element: T, function: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#25-27' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pushes a single element using the supplied radix key function.</p>
+</div><h4 id='method.push_batch' class="method"><span id='push_batch.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#tymethod.push_batch' class='fnname'>push_batch</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U&gt;(&amp;mut self, batch: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;, function: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#30-32' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pushes a batch of elements using the supplied radix key function.</p>
+</div><h4 id='method.finish_into' class="method"><span id='finish_into.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#tymethod.finish_into' class='fnname'>finish_into</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;target: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;function: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F<br>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#34-39' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Completes the sorting session and puts the sorted results into <code>target</code>.</p>
+</div><h4 id='method.extend' class="method"><span id='extend.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#method.extend' class='fnname'>extend</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U, I:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/iterator/trait.Iterator.html" title="trait core::iter::iterator::Iterator">Iterator</a>&lt;Item = T&gt;&gt;(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;mut self, <br>&nbsp;&nbsp;&nbsp;&nbsp;iterator: I, <br>&nbsp;&nbsp;&nbsp;&nbsp;key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F<br>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lib.rs.html#55-59' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Pushes a sequence of elements using the supplied radix key function.</p>
+</div><h4 id='method.finish' class="method"><span id='finish.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#method.finish' class='fnname'>finish</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U&gt;(&amp;mut self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lib.rs.html#61-65' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Completes the sorting session and returns the sorted results.</p>
+</div><h4 id='method.sort' class="method"><span id='sort.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorter.html#method.sort' class='fnname'>sort</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/function/trait.Fn.html" title="trait core::ops::function::Fn">Fn</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>T) -&gt; U&gt;(&amp;mut self, batches: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;&gt;, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>F)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lib.rs.html#69-74' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Sorts batched data using the supplied radix key function.</p>
+</div></div><h3 id='impl-RadixSorterBase&lt;T&gt;' class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="trait" href="../timely_sort/trait.RadixSorterBase.html" title="trait timely_sort::RadixSorterBase">RadixSorterBase</a>&lt;T&gt; for <a class="struct" href="../timely_sort/struct.LSBRadixSorter.html" title="struct timely_sort::LSBRadixSorter">Sorter</a>&lt;T&gt;</code><a href='#impl-RadixSorterBase&lt;T&gt;' class='anchor'></a></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#43-48' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorterBase.html#tymethod.new' class='fnname'>new</a>() -&gt; Self</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#44' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Allocates a new instance of the radix sorter.</p>
+</div><h4 id='method.rebalance' class="method"><span id='rebalance.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorterBase.html#tymethod.rebalance' class='fnname'>rebalance</a>(&amp;mut self, buffers: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;&gt;, intended: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lsb.rs.html#45-47' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Provides empty buffers for the radix sorter to use, with the intent that it should own at most <code>intended</code>.</p>
+</div><h4 id='method.recycle' class="method"><span id='recycle.v' class='invisible'><code>fn <a href='../timely_sort/trait.RadixSorterBase.html#method.recycle' class='fnname'>recycle</a>(&amp;mut self, buffers: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;T&gt;&gt;)</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/timely_sort/lib.rs.html#82-84' title='goto source code'>[src]</a></span></h4>
+<div class='docblock'><p>Provides empty buffers for the radix sorter to use.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "timely_sort";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
